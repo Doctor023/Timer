@@ -7,13 +7,14 @@ using test;
 
 namespace Timer
 {
-    public class HorizontalConstructionPlan : IConstructionPlan
+    public class HorizontalConstructionPlan
     {
         public bool Exists { get; set; }
-        public int Left { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Top;
 
-        public HorizontalConstructionPlan() // for horizontal constructions
+        public HorizontalConstructionPlan(int top) // for horizontal constructions
         {
+            Top = top;
         }
     }
 }

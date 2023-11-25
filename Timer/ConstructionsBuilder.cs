@@ -32,7 +32,7 @@ namespace Timer
             Number = number;
         }
 
-        public void GetConstructionsPlan() // get information about construction's plan for current number
+        public Tuple<List<VerticalConstructionPlan>, List<HorizontalConstructionPlan>> GetConstructionsPlans() // get information about construction's plan for current number
         {
             _verticalConstructionPlans = new List<VerticalConstructionPlan>
             {
@@ -43,9 +43,9 @@ namespace Timer
             };
             _horizontalConstructionPlans = new List<HorizontalConstructionPlan>
             {
-                new HorizontalConstructionPlan(),
-                new HorizontalConstructionPlan(),
-                new HorizontalConstructionPlan()
+                new HorizontalConstructionPlan(0),
+                new HorizontalConstructionPlan(4),
+                new HorizontalConstructionPlan(7)
             };
             switch (Number)
             {
@@ -58,7 +58,7 @@ namespace Timer
 
                     for (int i = 0; i < _horizontalConstructionPlans.Count; i++)
                     {
-                        if (i == 2)
+                        if (i == 1)
                         {
                             _horizontalConstructionPlans[i].Exists = false;
                         }
@@ -69,36 +69,29 @@ namespace Timer
                     }
 
                     break;
-
             }
+            return Tuple.Create(_verticalConstructionPlans, _horizontalConstructionPlans);
 
         }
-        public Tuple<List<string>, List<string>> CreateConstructions() // build construction
+        /*public Tuple<List<string>, List<string>> CreateConstructions() // build construction
         {
             List<string> verticalConstructions = new List<string>(4);
-            foreach (var vertical in _verticalConstructionPlans)
+            for (int i = 0; i < verticalConstructions.Count; i++)
             {
-                int left = vertical.Left;
-                string empty = "";
-                for (int i = 0; i < left; i++)
-                {
-                    empty += " ";
-                }
-                string construction = $"#\n{empty}#\n{empty}#";
-                verticalConstructions.Add(construction);
+                
             }
 
             List<string> horizontalConstructions = new List<string>(2);
 
             foreach (var horizontal in _horizontalConstructionPlans)
             {
-                string construction = "######";
+                string construction = "";
+                if (horizontal.Exists) { construction = "######"; }
                 horizontalConstructions.Add(construction);
 
             }
-            return Tuple.Create(verticalConstructions, horizontalConstructions);
+            return Tuple.Create(verticalConstructions, horizontalConstructions);*/
         
         }
     }
-}
 

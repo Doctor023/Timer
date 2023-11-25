@@ -10,48 +10,63 @@ namespace Timer
     internal class Digit
     {
         private List<string> _constructions = new List<string>(7);
+
         public int Number { get; set; }
-        public Digit()
-        {
-        }
+
+        public int Position { get; set; }
+
+        Tuple<List<VerticalConstructionPlan>, List<HorizontalConstructionPlan>>? Result;
+        List<VerticalConstructionPlan>? VerticalConstructionPlans;
+        List<HorizontalConstructionPlan>? HorizontalConstructionPlans;
+
         public void CreateDigit(int nubmer) // build a number
         {
             Number = nubmer;
+
             ConstructionsBuilder constructionsBuilder = new ConstructionsBuilder(Number);
-            constructionsBuilder.GetConstructionsPlan();
-            Tuple<List<string>, List<string>> result = constructionsBuilder.CreateConstructions();
-            List<string> verticalConstructions = result.Item1;
-            List<string> horizontalConstructions = result.Item2;
+            constructionsBuilder.GetConstructionsPlans();
 
-            Console.SetCursorPosition(0, 0);
-            Console.Write(horizontalConstructions[0]);
+            Result = constructionsBuilder.GetConstructionsPlans();
+            VerticalConstructionPlans = Result.Item1;
+            HorizontalConstructionPlans = Result.Item2;
 
-            Console.SetCursorPosition(0, 3);
-            Console.Write(verticalConstructions[1]);
+            CreateVerticalConstructions();
+            CreateHorizontalConstructions();
 
-            Console.SetCursorPosition(0, 6);
+            Console.Read();
+        }
 
-            Console.Write(horizontalConstructions[2]);
+        void CreateVerticalConstructions()
+        {
+            if (VerticalConstructionPlans != null)
+            {
+                foreach (var verticalConstructionPlan in VerticalConstructionPlans)
+                {
+                    for (int top = 0; top < 7; top++)
+                    {
+                        if (!verticalConstructionPlan.Exists) { continue; }
+                        Console.SetCursorPosition(verticalConstructionPlan.Left, top);
+                        Console.WriteLine("#");
+                    }
+                }
+            }
+        }
 
-         
+        void CreateHorizontalConstructions()
+        {
+            if (HorizontalConstructionPlans != null)
+            {
+                foreach (var horizontalConstructionPlan in HorizontalConstructionPlans)
+                {
+                    if (horizontalConstructionPlan.Exists)
+                    {
+                        string text = "########";
 
-            /*Console.SetCursorPosition(0, 0);
-            Console.Write(constructions[1]);
-
-            Console.SetCursorPosition(1, 2);
-            Console.Write(constructions[2]);
-
-            Console.SetCursorPosition(0, 3);
-            Console.Write(constructions[4]);
-
-            Console.SetCursorPosition(0, 7);
-            Console.Write(constructions[5]);*/
-
-            /*Console.SetCursorPosition(9, 0);
-            Console.Write(constructions[3]);
-
-           // Console.SetCursorPosition(7, 2);
-            Console.Read();*/
+                        Console.SetCursorPosition(0, horizontalConstructionPlan.Top);
+                        Console.WriteLine(text);
+                    }
+                }
+            }
         }
     }
 }
