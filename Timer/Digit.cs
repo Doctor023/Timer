@@ -14,16 +14,20 @@ namespace Timer
         public int Number { get; set; }
 
         public int Position { get; set; }
+        public int Left { get; set; }
 
         Tuple<List<VerticalConstructionPlan>, List<HorizontalConstructionPlan>>? Result;
         List<VerticalConstructionPlan>? VerticalConstructionPlans;
         List<HorizontalConstructionPlan>? HorizontalConstructionPlans;
 
-        public void CreateDigit(int nubmer) // build a number
+        public void CreateDigit(int nubmer, int position) // build a number
         {
             Number = nubmer;
+            Position = position;
 
-            ConstructionsBuilder constructionsBuilder = new ConstructionsBuilder(Number);
+            Left = GetCurrentPosition();
+
+            ConstructionsBuilder constructionsBuilder = new ConstructionsBuilder(Number, Left);
             constructionsBuilder.GetConstructionsPlans();
 
             Result = constructionsBuilder.GetConstructionsPlans();
@@ -32,8 +36,6 @@ namespace Timer
 
             CreateVerticalConstructions();
             CreateHorizontalConstructions();
-
-            Console.Read();
         }
 
         void CreateVerticalConstructions()
@@ -42,14 +44,15 @@ namespace Timer
             {
                 foreach (var verticalConstructionPlan in VerticalConstructionPlans)
                 {
-                    for (int top = 0; top < 7; top++)
+                    int top = verticalConstructionPlan.Top;
+                    for (int i = 0; i < 3; i++)
                     {
-                        if (!verticalConstructionPlan.Exists) { continue; }
                         Console.SetCursorPosition(verticalConstructionPlan.Left, top);
-                        Console.WriteLine("#");
+                        Console.Write("#");
+                        top++;
                     }
                 }
-            }
+            }          
         }
 
         void CreateHorizontalConstructions()
@@ -62,11 +65,24 @@ namespace Timer
                     {
                         string text = "########";
 
-                        Console.SetCursorPosition(0, horizontalConstructionPlan.Top);
-                        Console.WriteLine(text);
+                        Console.SetCursorPosition(Left, horizontalConstructionPlan.Top);
+                        Console.Write(text);
                     }
                 }
             }
+        }
+        int GetCurrentPosition()
+        {
+            int left = 0;
+            int indentation = 10;
+            switch (Position)
+            {
+                case 1: left = 10; break;
+                case 2: left = 25; break;
+                case 3: left = 35; break;
+                default: break;
+            }
+            return left;
         }
     }
 }

@@ -11,10 +11,13 @@ namespace Timer
     {
         public bool Exists { get; set ; }
         public int Left { get; set; }
+        public int Position { get; set; }
+        public int Top { get; set; }
 
-        public VerticalConstructionPlan(int left) // for vertical constructions
+        public VerticalConstructionPlan(int left, int top) // for vertical constructions
         {
             Left = left;
+            Top = top;
         }
     }
 }

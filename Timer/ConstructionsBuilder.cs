@@ -12,7 +12,7 @@ namespace Timer
     {
 
         public int Number { get; set; }
-        List<bool> _constructionsPlanBool = new List<bool>(7);
+        public int Left { get; set; }
 
         List<HorizontalConstructionPlan> _horizontalConstructionPlans = new List<HorizontalConstructionPlan>(3);
         List<VerticalConstructionPlan> _verticalConstructionPlans = new List<VerticalConstructionPlan>(4);
@@ -27,25 +27,26 @@ namespace Timer
         }
 
 
-        public ConstructionsBuilder(int number)
+        public ConstructionsBuilder(int number, int left)
         {
             Number = number;
+            Left = left;
         }
 
         public Tuple<List<VerticalConstructionPlan>, List<HorizontalConstructionPlan>> GetConstructionsPlans() // get information about construction's plan for current number
         {
             _verticalConstructionPlans = new List<VerticalConstructionPlan>
             {
-                new VerticalConstructionPlan(0),
-                new VerticalConstructionPlan(7),
-                new VerticalConstructionPlan(0),
-                new VerticalConstructionPlan(7)
+                new VerticalConstructionPlan(Left, 0),
+                new VerticalConstructionPlan(Left + 7, 0),
+                new VerticalConstructionPlan(Left, 3),
+                new VerticalConstructionPlan(Left + 7, 3)
             };
             _horizontalConstructionPlans = new List<HorizontalConstructionPlan>
             {
                 new HorizontalConstructionPlan(0),
-                new HorizontalConstructionPlan(4),
-                new HorizontalConstructionPlan(7)
+                new HorizontalConstructionPlan(3),
+                new HorizontalConstructionPlan(6)
             };
             switch (Number)
             {

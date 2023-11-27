@@ -10,7 +10,7 @@ namespace Timer
     public class HorizontalConstructionPlan
     {
         public bool Exists { get; set; }
-        public int Top;
+        public int Top { get; set; }
 
         public HorizontalConstructionPlan(int top) // for horizontal constructions
         {

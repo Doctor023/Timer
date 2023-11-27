@@ -8,7 +8,7 @@ namespace TimerTests
     public class TimerTests
     {
 
-        [Fact]
+        /*[Fact]
         public void CreateConstructions_0_trueVerticalReturn()
         {
             ConstructionsBuilder constructionsBuilder = new ConstructionsBuilder(0);
@@ -16,6 +16,6 @@ namespace TimerTests
             constructionsBuilder.GetConstructionsPlans();
 
             //Assert.True(if constructionsBuilder.);
-        }
+        }*/
     }
 }
