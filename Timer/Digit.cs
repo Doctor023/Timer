@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using test;
 
 namespace Timer
 {
@@ -45,10 +44,15 @@ namespace Timer
                 foreach (var verticalConstructionPlan in VerticalConstructionPlans)
                 {
                     int top = verticalConstructionPlan.Top;
-                    for (int i = 0; i < 3; i++)
+                    string text = "";
+                    if (verticalConstructionPlan.Exists)
+                    {
+                         text = "#";
+                    }
+                    for (int i = 0; i < 4; i++)
                     {
                         Console.SetCursorPosition(verticalConstructionPlan.Left, top);
-                        Console.Write("#");
+                        Console.Write(text);
                         top++;
                     }
                 }
@@ -74,7 +78,6 @@ namespace Timer
         int GetCurrentPosition()
         {
             int left = 0;
-            int indentation = 10;
             switch (Position)
             {
                 case 1: left = 10; break;

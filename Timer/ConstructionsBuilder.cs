@@ -68,31 +68,197 @@ namespace Timer
                             _horizontalConstructionPlans[i].Exists = true;
                         }
                     }
+                    break;
 
+                case 1:
+
+                    for (int i = 0; i < _verticalConstructionPlans.Count; i++)
+                    {
+                        if (i == 0 || i == 2)
+                        {
+                            _verticalConstructionPlans[i].Exists = false;
+                        }
+                        else
+                        {
+                            _verticalConstructionPlans[i].Exists = true;
+                        }
+                    }
+
+                    for (int i = 0; i < _horizontalConstructionPlans.Count; i++)
+                    {
+                        _horizontalConstructionPlans[i].Exists = false;
+                    }
+                    break;
+
+                case 2:
+
+                    for (int i = 0; i < _verticalConstructionPlans.Count; i++)
+                    {
+                        if (i == 0 || i == 3)
+                        {
+                            _verticalConstructionPlans[i].Exists = false;
+                        }
+                        else
+                        {
+                            _verticalConstructionPlans[i].Exists = true;
+                        }
+                    }
+
+                    for (int i = 0; i < _horizontalConstructionPlans.Count; i++)
+                    {
+                        _horizontalConstructionPlans[i].Exists = true;
+                    }
+                    break;
+                case 3:
+
+                    for (int i = 0; i < _verticalConstructionPlans.Count; i++)
+                    {
+                        if (i == 0 || i == 2)
+                        {
+                            _verticalConstructionPlans[i].Exists = false;
+                        }
+                        else
+                        {
+                            _verticalConstructionPlans[i].Exists = true;
+                        }
+                    }
+
+                    for (int i = 0; i < _horizontalConstructionPlans.Count; i++)
+                    {
+                        _horizontalConstructionPlans[i].Exists = true;
+                    }
+                    break;
+
+                case 4:
+
+                    for (int i = 0; i < _verticalConstructionPlans.Count; i++)
+                    {
+                        if (i == 2)
+                        {
+                            _verticalConstructionPlans[i].Exists = false;
+                        }
+                        else
+                        {
+                            _verticalConstructionPlans[i].Exists = true;
+                        }
+                    }
+
+                    for (int i = 0; i < _horizontalConstructionPlans.Count; i++)
+                    {
+                        _horizontalConstructionPlans[i].Exists = true;
+                        if (i == 0 || i == 2)
+                        {
+                            _horizontalConstructionPlans[i].Exists = false;
+                        }
+                    }
+                    break;
+
+                case 5:
+
+                    for (int i = 0; i < _verticalConstructionPlans.Count; i++)
+                    {
+                        if (i == 2 || i == 4 || i == 1)
+                        {
+                            _verticalConstructionPlans[i].Exists = false;
+                        }
+                        else
+                        {
+                            _verticalConstructionPlans[i].Exists = true;
+                        }
+                    }
+
+                    for (int i = 0; i < _horizontalConstructionPlans.Count; i++)
+                    {
+                        _horizontalConstructionPlans[i].Exists = true;
+                    }
+                    break;              
+
+                case 6:
+
+                    for (int i = 0; i < _verticalConstructionPlans.Count; i++)
+                    {
+                        if (i == 1)
+                        {
+                            _verticalConstructionPlans[i].Exists = false;
+                        }
+                        else
+                        {
+                            _verticalConstructionPlans[i].Exists = true;
+                        }
+                    }
+
+                    for (int i = 0; i < _horizontalConstructionPlans.Count; i++)
+                    {
+                        _horizontalConstructionPlans[i].Exists = true;
+                    }
+                    break;
+
+                case 7:
+
+                    for (int i = 0; i < _verticalConstructionPlans.Count; i++)
+                    {
+                        if (i == 0 || i == 2)
+                        {
+                            _verticalConstructionPlans[i].Exists = false;
+                        }
+                        else
+                        {
+                            _verticalConstructionPlans[i].Exists = true;
+                        }
+                    }
+
+                    for (int i = 0; i < _horizontalConstructionPlans.Count; i++)
+                    {
+                        if (i == 1 || i == 2)
+                        {
+                            _horizontalConstructionPlans[i].Exists = false;
+                        }
+                        else
+                        {
+                            _horizontalConstructionPlans[i].Exists = true;
+                        }
+                    }
+                break;
+
+                case 8:
+
+                    for (int i = 0; i < _verticalConstructionPlans.Count; i++)
+                    {
+                        _verticalConstructionPlans[i].Exists = true;
+                    }
+
+                    for (int i = 0; i < _horizontalConstructionPlans.Count; i++)
+                    {
+
+                        _horizontalConstructionPlans[i].Exists = true;
+
+                    }
+                    break;
+
+                case 9:
+
+                    for (int i = 0; i < _verticalConstructionPlans.Count; i++)
+                    {
+                        if (i == 2)
+                        {
+                            _verticalConstructionPlans[i].Exists = false;
+                        }
+                        else
+                        {
+                            _verticalConstructionPlans[i].Exists = true;
+                        }
+                    }
+
+                    for (int i = 0; i < _horizontalConstructionPlans.Count; i++)
+                    {
+                        _horizontalConstructionPlans[i].Exists = true;
+                    }
                     break;
             }
+
             return Tuple.Create(_verticalConstructionPlans, _horizontalConstructionPlans);
 
-        }
-        /*public Tuple<List<string>, List<string>> CreateConstructions() // build construction
-        {
-            List<string> verticalConstructions = new List<string>(4);
-            for (int i = 0; i < verticalConstructions.Count; i++)
-            {
-                
-            }
-
-            List<string> horizontalConstructions = new List<string>(2);
-
-            foreach (var horizontal in _horizontalConstructionPlans)
-            {
-                string construction = "";
-                if (horizontal.Exists) { construction = "######"; }
-                horizontalConstructions.Add(construction);
-
-            }
-            return Tuple.Create(verticalConstructions, horizontalConstructions);*/
-        
+        }    
         }
     }
 

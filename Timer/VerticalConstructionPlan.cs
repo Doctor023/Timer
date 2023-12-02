@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using test;
 
 namespace Timer
 {
-    public class VerticalConstructionPlan : IConstructionPlan
+    public class VerticalConstructionPlan
     {
         public bool Exists { get; set ; }
         public int Left { get; set; }

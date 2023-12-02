@@ -8,14 +8,18 @@ namespace TimerTests
     public class TimerTests
     {
 
-        /*[Fact]
-        public void CreateConstructions_0_trueVerticalReturn()
+        [Fact]
+        public void Menu_InputIs3_ReturnsTrue()
         {
-            ConstructionsBuilder constructionsBuilder = new ConstructionsBuilder(0);
+            // Arrange
+            /*string input = "3";
+            bool expected = true;
 
-            constructionsBuilder.GetConstructionsPlans();
+            // Act
+            ///ool result = Program.Menu(input);
 
-            //Assert.True(if constructionsBuilder.);
-        }*/
+            // Assert
+            Assert.Equal(expected, result);*/
+        }
     }
 }
